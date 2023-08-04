@@ -12,9 +12,26 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+}
 @layer utilities {
-  .bg-green-banner {
+  .bg-green-user {
     background-color: #003d2a;
+  }
+  .text-green-user {
+    color: #003d2a;
+  }
+  .border-green-user {
+    border-color: #003d2a;
   }
 }

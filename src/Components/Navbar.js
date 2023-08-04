@@ -6,36 +6,33 @@ import {
   PermIdentity,
   Search,
 } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
     <nav className='p-2 text-gray-800 h-28 font-medium'>
       <ul className='flex justify-between items-center h-full container m-auto '>
         <li className='hover:underline'>
-          <a
-            href='https://metmuseum.github.io/'
-            target='_blank'
-            rel='noopener noreferrer '
-          >
+          <Link to='/'>
             <img
               src={logo}
               alt='The Metropolitan Museum of Art'
               className='h-20'
             />
-          </a>
+          </Link>
         </li>
         <li className='hover:underline '>
-          <a href='#about'>Categories</a>
+          <Link to='#about'>Categories</Link>
           <ExpandMore />
         </li>
         <li className='hover:underline '>
-          <a href='#contact'>Deals</a>
+          <Link href='#contact'>Deals</Link>
         </li>
         <li className='hover:underline '>
-          <a href='#contact'>What's New</a>
+          <Link href='#contact'>What's New</Link>
         </li>
         <li className='hover:underline '>
-          <a href='#contact'>Delivery</a>
+          <Link href='#contact'>Delivery</Link>
         </li>
         <li className='hover:underline '>
           <input
@@ -46,14 +43,14 @@ function Navbar() {
           <Search className='relative right-8 text-gray-500' />
         </li>
         <li className='hover:underline '>
-          <a href=''>
+          <Link href=''>
             <PermIdentity className='relative bottom-[3px] right-1' />
             Account
-          </a>
+          </Link>
         </li>
         <li className='hover:underline '>
           <BookmarksOutlined className='relative bottom-[3px] right-1' />
-          <a href=''>Bookmarks</a>
+          <Link href=''>Bookmarks</Link>
         </li>
       </ul>
     </nav>
