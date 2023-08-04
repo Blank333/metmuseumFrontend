@@ -13,7 +13,7 @@ function ItemCard({ data }) {
   } = data;
 
   return (
-    <div className='w-1/4 p-4 flex flex-col'>
+    <div className='lg:w-1/4 p-4 flex flex-col'>
       <Link
         to={`/item/${objectID}`}
         className='hover:shadow-xl rounded-xl p-1 h-full'

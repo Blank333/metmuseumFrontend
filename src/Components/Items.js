@@ -42,8 +42,10 @@ function Items() {
 
   return (
     <div className='container m-auto'>
-      <h1 className='text-3xl'>The Metropolitan Museum of Art</h1>
-      <div className='flex flex-wrap justify-center '>
+      <h1 className='lg:text-3xl text-xl text-center lg:text-left mt-4'>
+        The Metropolitan Museum of Art
+      </h1>
+      <div className='flex flex-col lg:flex-row flex-wrap justify-center '>
         {loading && (
           <RotateRightRounded
             className='animate-spin relative top-52 '

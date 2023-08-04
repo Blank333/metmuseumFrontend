@@ -47,18 +47,18 @@ const ImageBanner = () => {
         </div>
         <div className='absolute top-0 left-0 w-full h-full bg-black opacity-50' />
 
-        <div className='absolute top-20 left-20 text-white font-bold text-5xl w-1/2 flex flex-col items-start gap-8'>
+        <div className='absolute top-20 left-20 text-white font-bold lg:text-5xl text-xl w-1/2 flex flex-col items-start gap-8'>
           <h1>
             Over 5,000 years of art from around the world for everyone to
             experience and enjoy
           </h1>
-          <button className='text-lg bg-green-user rounded-full py-3 px-6'>
+          <button className='lg:text-lg text-sm bg-green-user rounded-full py-3 px-6'>
             View Now
           </button>
         </div>
         <div className='text-white absolute w-fit left-0 right-0 mx-auto flex bottom-4'>
           {images.map((image, index) => (
-            <div
+            <button
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={`cursor-pointer p-1 ${
@@ -68,7 +68,7 @@ const ImageBanner = () => {
               } duration-300`}
             >
               <FiberManualRecordOutlined />
-            </div>
+            </button>
           ))}
         </div>
       </div>

@@ -4,20 +4,21 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <section className='p-2 bg-green-user text-white text-sm font-light h-10'>
+    <section className='p-2 bg-green-user text-white lg:text-sm text-[10px] font-light lg:h-10'>
       <ul className='flex justify-between container m-auto items-center'>
         <li>
-          <PhoneOutlined />
+          <PhoneOutlined fontSize='small' />
           <Link to='/'>+917807877689</Link>
         </li>
         <li>
           <Link to='https://www.metmuseum.org/'>
-            <span className='mx-7'>Visit the official website!</span>|
-            <span className='mx-7'>View Now</span>
+            <span className='lg:mx-7'>Visit the official website!</span>
+            <p className='lg:inline hidden '>|</p>
+            <span className='mx-7 lg:inline hidden'>View Now</span>
           </Link>
         </li>
         <li className='flex'>
-          <section className='mr-4'>
+          <section className='lg:mr-4'>
             <select>
               <option value='english' className='text-black'>
                 English
@@ -28,10 +29,10 @@ function Navbar() {
               <option value='kannada' className='text-black'>
                 ಕನ್ನಡ
               </option>
-              <ExpandMore />
             </select>
+            <ExpandMore fontSize='small' />
           </section>
-          <section className='ml-4'>
+          <section className='lg:ml-4'>
             <select>
               <option disabled selected hidden>
                 Location
@@ -46,7 +47,7 @@ function Navbar() {
                 UK
               </option>
             </select>
-            <ExpandMore />
+            <ExpandMore fontSize='small' />
           </section>
         </li>
       </ul>
