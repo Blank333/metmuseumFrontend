@@ -16,7 +16,7 @@ function Items() {
       .then((objectIds) => {
         console.log(objectIds);
         const objectDetailsPromises = objectIds
-          .slice(200, 250)
+          .slice(200, 210)
           .map((objectId) =>
             getObjectDetails(objectId).catch((error) => {
               console.error("Error fetching object details:", error);
@@ -42,13 +42,13 @@ function Items() {
 
   return (
     <div className='container m-auto'>
-      <h1 className='lg:text-3xl text-xl text-center lg:text-left mt-4'>
+      <h1 className='lg:text-3xl text-xl text-center lg:text-left mt-4 font-medium'>
         The Metropolitan Museum of Art
       </h1>
-      <div className='flex flex-col lg:flex-row flex-wrap justify-center '>
+      <div className='flex flex-col lg:flex-row flex-wrap lg:justify-center'>
         {loading && (
           <RotateRightRounded
-            className='animate-spin relative top-52 '
+            className='animate-spin relative top-20 '
             style={{ fontSize: 48 }}
           />
         )}
