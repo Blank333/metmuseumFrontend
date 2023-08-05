@@ -55,7 +55,7 @@ function Navbar() {
                   type='search'
                   placeholder='Search'
                 />
-                <Search className='absolute right-8 top-[8.2em] text-gray-500' />
+                <Search className='relative right-8 top-0 text-gray-500' />
               </li>
 
               <li className='hover:underline'>
