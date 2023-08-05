@@ -6,6 +6,7 @@ import Item from "./Components/Item";
 import NotFound from "./Components/NotFound";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Highlights from "./Components/Highlights";
+import Bookmarks from "./Components/Bookmarks";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
                 }
               />
               <Route path='/item/:objectID' element={<Navbar />} />
+              <Route path='/bookmarks' element={<Navbar />} />
               <Route path='*' element={<Navbar />} />
             </Routes>
           </header>
@@ -33,6 +35,7 @@ function App() {
               <Route path='/' element={<Items />} />
               <Route path='/item/:objectID' element={<Item />} />
               <Route path='/item/highlights' element={<Highlights />} />
+              <Route path='/bookmarks' element={<Bookmarks />} />
               <Route path='*' element={<NotFound />} />
             </Routes>
           </main>

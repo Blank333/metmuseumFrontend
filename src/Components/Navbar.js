@@ -67,7 +67,7 @@ function Navbar() {
               </li>
               <li className='hover:underline'>
                 <BookmarksOutlined className='relative bottom-[3px] right-1' />
-                <Link to=''>Bookmarks</Link>
+                <Link to='/bookmarks'>Bookmarks</Link>
               </li>
             </ul>
           )}
@@ -103,7 +103,7 @@ function Navbar() {
           </li>
           <li className='hover:underline '>
             <BookmarksOutlined className='relative bottom-[3px] right-1' />
-            <Link to=''>Bookmarks</Link>
+            <Link to='/bookmarks'>Bookmarks</Link>
           </li>
         </ul>
       </div>

@@ -1,8 +1,17 @@
-import { BookmarkAddOutlined, Star } from "@mui/icons-material";
+import {
+  BookmarkAddOutlined,
+  BookmarkRemoveOutlined,
+  Star,
+} from "@mui/icons-material";
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addBookmark, removeBookmark } from "../actions/bookmarkActions";
 
 function ItemCard({ data }) {
+  const dispatch = useDispatch();
+  const bookmarks = useSelector((state) => state.bookmarks.bookmarks);
+
   const {
     primaryImageSmall,
     objectDate,
@@ -12,11 +21,23 @@ function ItemCard({ data }) {
     objectID,
   } = data;
 
+  const handleBookmarkClick = (_id) => {
+    if (bookmarks.includes(_id)) {
+      alert(`${_id} removed from bookmarks`);
+      dispatch(removeBookmark(_id));
+    } else {
+      alert(`${_id} added to bookmarks`);
+      dispatch(addBookmark(_id));
+    }
+  };
+
+  const isBookmarked = bookmarks.includes(objectID);
+
   return (
     <div className='lg:w-1/4 w-full p-4 flex flex-col relative'>
-      <button>
+      <button onClick={() => handleBookmarkClick(objectID)}>
         <div className='absolute top-7 right-7 bg-white rounded-full text-gray-500 p-1 hover:bg-green-user hover:text-white transition-colors duration-500'>
-          <BookmarkAddOutlined />
+          {isBookmarked ? <BookmarkRemoveOutlined /> : <BookmarkAddOutlined />}
         </div>
       </button>
       <Link
@@ -55,8 +76,12 @@ function ItemCard({ data }) {
           <Star />
           <p className='text-gray-600 font-medium'>(121)</p>
         </div>
-        <button className='border-4 border-gray-300 rounded-full hover:bg-green-user hover:text-white hover:border-green-user my-4 py-2 px-4 font-medium transition-colors duration-500'>
-          Add to Bookmarks
+
+        <button
+          onClick={() => handleBookmarkClick(objectID)}
+          className='border-4 border-gray-300 rounded-full hover:bg-green-user hover:text-white hover:border-green-user my-4 py-2 px-4 font-medium transition-colors duration-500'
+        >
+          {isBookmarked ? "Remove from Bookmarks" : "Add to Bookmarks"}
         </button>
       </div>
     </div>

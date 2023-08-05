@@ -3,12 +3,16 @@ import { Link, useParams } from "react-router-dom";
 import { getObjectDetails } from "../api/api";
 import { Flare, Public, RotateRightRounded, Star } from "@mui/icons-material";
 import NotFound from "./NotFound";
+import { useDispatch } from "react-redux";
+import { addBookmark } from "../actions/bookmarkActions";
 
 function Item() {
   const { objectID } = useParams();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [currentImage, setCurrentImage] = useState(null);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetchData();
@@ -32,6 +36,11 @@ function Item() {
       setCurrentImage(image);
       container.style.opacity = 1;
     }, 300);
+  };
+
+  const handleBookmarkClick = (_id) => {
+    alert(`${_id} added to bookmarks`);
+    dispatch(addBookmark(_id));
   };
 
   return (
@@ -110,7 +119,7 @@ function Item() {
                 <p className='font-medium text-xl mb-4 mt-8'>
                   Choose picture to view
                 </p>
-                <div className='flex justify-start gap-6 '>
+                <div className='flex justify-start gap-6 flex-wrap'>
                   <button onClick={() => handleImageClick(data.primaryImage)}>
                     <img
                       src={data.primaryImage}
@@ -138,7 +147,10 @@ function Item() {
                 >
                   View on Met Museum
                 </Link>
-                <button className='border-4 border-green-900 rounded-full hover:bg-green-user hover:text-white hover:border-green-user my-4 py-3 lg:px-10 px-3 font-medium transition-colors duration-500'>
+                <button
+                  onClick={() => handleBookmarkClick(data?.objectID)}
+                  className='border-4 border-green-900 rounded-full hover:bg-green-user hover:text-white hover:border-green-user my-4 py-3 lg:px-10 px-3 font-medium transition-colors duration-500'
+                >
                   Add to Bookmarks
                 </button>
               </div>
