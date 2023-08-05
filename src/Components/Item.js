@@ -45,6 +45,12 @@ function Item() {
 
   return (
     <div className='container mx-auto border-t-2 '>
+      <div className='mt-8'>
+        <p className='text-gray-500'>
+          {data?.classification} / {data?.department} /{" "}
+          <span className='text-black font-medium'>{data?.title}</span>
+        </p>
+      </div>
       <div className='py-8 px-4 flex justify-center'>
         {loading && (
           <RotateRightRounded

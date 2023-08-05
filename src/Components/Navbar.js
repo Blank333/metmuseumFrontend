@@ -46,11 +46,9 @@ function Navbar() {
                 <Link to='/item/highlights'>Highlights</Link>
               </li>
               <li className='hover:underline'>
-                <Link to='#contact'>What's New</Link>
+                <Link to='/item/highlights'>What's New</Link>
               </li>
-              <li className='hover:underline'>
-                <Link to='#contact'>Delivery</Link>
-              </li>
+
               <li className='hover:underline text-center'>
                 <input
                   className='rounded-3xl w-5/6 px-4 py-2 bg-gray-100 placeholder:text-gray-500'
@@ -59,12 +57,7 @@ function Navbar() {
                 />
                 <Search className='absolute right-8 top-[9.6em] text-gray-500' />
               </li>
-              <li className='hover:underline'>
-                <Link to=''>
-                  <PermIdentity className='relative bottom-[3px] right-1' />
-                  Account
-                </Link>
-              </li>
+
               <li className='hover:underline'>
                 <BookmarksOutlined className='relative bottom-[3px] right-1' />
                 <Link to='/bookmarks'>Bookmarks</Link>
@@ -82,11 +75,9 @@ function Navbar() {
             <Link to='/item/highlights'>Highlights</Link>
           </li>
           <li className='hover:underline '>
-            <Link to='#contact'>What's New</Link>
+            <Link to='/item/highlights'>What's New</Link>
           </li>
-          <li className='hover:underline '>
-            <Link to='#contact'>Delivery</Link>
-          </li>
+
           <li className='hover:underline'>
             <input
               className='rounded-3xl px-4 py-2 bg-gray-100 placeholder:text-gray-500'
@@ -95,12 +86,7 @@ function Navbar() {
             />
             <Search className='relative right-8 text-gray-500' />
           </li>
-          <li className='hover:underline '>
-            <Link to=''>
-              <PermIdentity className='relative bottom-[3px] right-1' />
-              Account
-            </Link>
-          </li>
+
           <li className='hover:underline '>
             <BookmarksOutlined className='relative bottom-[3px] right-1' />
             <Link to='/bookmarks'>Bookmarks</Link>
