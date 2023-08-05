@@ -34,7 +34,7 @@ function ItemCard({ data }) {
   const isBookmarked = bookmarks.includes(objectID);
 
   return (
-    <div className='lg:w-1/4 w-full p-4 flex flex-col relative h-[69vh]'>
+    <div className='lg:w-1/4 w-full p-4 flex flex-col relative'>
       <button onClick={() => handleBookmarkClick(objectID)}>
         <div className='absolute top-7 right-7 bg-white rounded-full text-gray-500 p-1 hover:bg-green-user hover:text-white transition-colors duration-500'>
           {isBookmarked ? <BookmarkRemoveOutlined /> : <BookmarkAddOutlined />}
