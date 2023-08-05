@@ -70,7 +70,7 @@ function Items({ isHighlight }) {
   return (
     <div className='container m-auto'>
       <ImageBanner />
-      <div className='flex gap-6 lg:justify-start justify-center flex-wrap'>
+      <div className='flex lg:gap-6 lg:justify-start justify-between flex-wrap mx-3'>
         <button className='p-3 bg-gray-200 rounded-full font-semibold mt-8'>
           Art Type
           <ExpandMore />
