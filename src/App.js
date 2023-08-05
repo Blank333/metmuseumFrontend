@@ -1,6 +1,5 @@
 import Banner from "./Components/Banner";
 import Navbar from "./Components/Navbar";
-import ImmageBanner from "./Components/ImageBanner";
 import Items from "./Components/Items";
 import Item from "./Components/Item";
 import NotFound from "./Components/NotFound";
@@ -15,20 +14,9 @@ function App() {
         <div className='App'>
           <header>
             <Routes>
-              <Route
-                path='/'
-                element={
-                  <>
-                    <Banner />
-                    <Navbar />
-                    <ImmageBanner />
-                  </>
-                }
-              />
-              <Route path='/item/:objectID' element={<Navbar />} />
-              <Route path='/bookmarks' element={<Navbar />} />
-              <Route path='*' element={<Navbar />} />
+              <Route path='/' element={<Banner />} />
             </Routes>
+            <Navbar />
           </header>
           <main>
             <Routes>
