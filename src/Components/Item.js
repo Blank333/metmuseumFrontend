@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getObjectDetails } from "../api/api";
-import { RotateRightRounded, Star } from "@mui/icons-material";
+import { Flare, Public, RotateRightRounded, Star } from "@mui/icons-material";
 import NotFound from "./NotFound";
 
 function Item() {
@@ -44,10 +44,10 @@ function Item() {
           />
         )}
         {data ? (
-          <div className='grid grid-cols-2 rounded-lg'>
+          <div className='grid lg:grid-cols-2 rounded-lg'>
             <div className='flex flex-col m-6 '>
               <div
-                className='bg-gray-200 p-8 rounded-xl transition-opacity duration-300'
+                className='bg-gray-100 p-8 rounded-xl transition-opacity duration-300'
                 id='primaryImageContainer'
               >
                 <Link
@@ -63,23 +63,24 @@ function Item() {
                   />
                 </Link>
               </div>
-              <div className='flex justify-between gap-5 mt-5'>
+              <div className='flex justify-center gap-5 mt-5'>
                 {data.additionalImages.slice(0, 4).map((image) => (
                   <button onClick={() => handleImageClick(image)}>
                     <img
                       src={image}
                       alt='Item'
-                      className='w-40 h-40 rounded bg-gray-200 p-4'
+                      className='w-40 h-40 rounded bg-gray-100 p-4'
                     />
                   </button>
                 ))}
               </div>
             </div>
-            <div className='mt-8 mr-8'>
+            <div className='mt-8 lg:mr-8'>
               <div className='flex flex-col'>
                 <h1 className='text-4xl font-bold'>{data?.title}</h1>
                 <p className='text-gray-600 mt-4'>
-                  {data?.artistRole && +":"} {data?.artistDisplayName}
+                  {data?.artistRole && data?.artistRole + ":"}{" "}
+                  {data?.artistDisplayName}
                 </p>
                 <Link
                   to={data?.artistWikidata_URL}
@@ -89,7 +90,7 @@ function Item() {
                   <p className='text-gray-600'>{data?.artistDisplayBio}</p>
                 </Link>
                 <p className='text-gray-600'>
-                  {data?.creditLine && +","} {data?.medium}
+                  {data?.creditLine && data?.creditLine + ","} {data?.medium}
                 </p>
                 <div className='flex text-green-500 mt-4'>
                   <Star />
@@ -114,32 +115,67 @@ function Item() {
                     <img
                       src={data.primaryImage}
                       alt='Item'
-                      className='w-14 h-14 rounded-full active:outline-green-900 active:outline  p-1'
+                      className='w-14 h-14 rounded-full active:outline-green-900 active:outline hover:outline-green-900 hover:outline p-1 '
                     />
                   </button>
-                  {data?.additionalImages.slice(0, 4).map((image) => (
+                  {data?.additionalImages.map((image) => (
                     <button onClick={() => handleImageClick(image)}>
                       <img
                         src={image}
                         alt='Item'
-                        className='w-14 h-14 rounded-full active:outline-green-900 active:outline p-1'
+                        className='w-14 h-14 rounded-full active:outline-green-900 active:outline hover:outline-green-900 hover:outline p-1'
                       />
                     </button>
                   ))}
                 </div>
               </div>
-              <div className='flex gap-8 mt-8 border-t-2'>
+              <div className='flex gap-8 mt-8 border-t-2 lg:text-normal text-sm text-center lg:justify-start justify-center  '>
                 <Link
                   to={data?.objectURL}
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='border-4 border-green-user rounded-full bg-green-user text-white hover:border-green-user my-4 py-2 px-10 font-medium'
+                  className='border-4 border-green-user rounded-full bg-green-user text-white hover:bg-green-950 hover:border-green-950 my-4 py-3 lg:px-10 px-3 font-medium transition-colors duration-500'
                 >
                   View on Met Museum
                 </Link>
-                <button className='border-4 border-green-900 rounded-full hover:bg-green-user hover:text-white hover:border-green-user my-4 py-2 px-10 font-medium'>
+                <button className='border-4 border-green-900 rounded-full hover:bg-green-user hover:text-white hover:border-green-user my-4 py-3 lg:px-10 px-3 font-medium transition-colors duration-500'>
                   Add to Bookmarks
                 </button>
+              </div>
+              <div className='mt-8 shadow'>
+                {data?.isHighlight && (
+                  <div className='flex border-b-2 w-full p-4'>
+                    <Flare className='text-orange-600' />
+                    <div className='mx-4 '>
+                      <p>Highlighted Item</p>
+                      <p className='text-gray-600 underline mt-2'>
+                        This item has been highlighted by The Metropolitan
+                        Museum of Art.
+                      </p>
+                    </div>
+                  </div>
+                )}
+                {data?.isPublicDomain && (
+                  <div className='flex border-b-2 w-full p-4'>
+                    <Public className='text-orange-600' />
+
+                    <div className='mx-4 '>
+                      <p>Public Domain</p>
+                      <p className='text-gray-600 mt-2'>
+                        This item is available freely on the public domain.
+                        <span className='font-medium underline ml-1'>
+                          <Link
+                            to='https://en.wikipedia.org/wiki/Public_domain'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                          >
+                            Details
+                          </Link>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

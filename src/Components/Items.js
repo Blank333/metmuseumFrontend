@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { getObjectDetails, getObjectIdsWithImage } from "../api/api";
+import {
+  getObjectDetails,
+  getObjectIdsWithHighlight,
+  getObjectIdsWithImage,
+} from "../api/api";
 import { RotateRightRounded } from "@mui/icons-material";
 import ItemCard from "./ItemCard";
 
-function Items() {
+function Items({ isHighlight }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -12,17 +16,20 @@ function Items() {
   }, []);
 
   const fetchData = () => {
-    getObjectIdsWithImage()
+    let getObjectIdsPromise;
+    isHighlight
+      ? (getObjectIdsPromise = getObjectIdsWithHighlight())
+      : (getObjectIdsPromise = getObjectIdsWithImage());
+
+    getObjectIdsPromise
       .then((objectIds) => {
         console.log(objectIds);
-        const objectDetailsPromises = objectIds
-          .slice(200, 210)
-          .map((objectId) =>
-            getObjectDetails(objectId).catch((error) => {
-              console.error("Error fetching object details:", error);
-              return null;
-            })
-          );
+        const objectDetailsPromises = objectIds.slice(0, 15).map((objectId) =>
+          getObjectDetails(objectId).catch((error) => {
+            console.error("Error fetching object details:", error);
+            return null;
+          })
+        );
 
         return Promise.all(objectDetailsPromises);
       })
@@ -45,7 +52,12 @@ function Items() {
       <h1 className='lg:text-3xl text-xl text-center lg:text-left mt-4 font-medium'>
         The Metropolitan Museum of Art
       </h1>
-      <div className='flex flex-col lg:flex-row flex-wrap lg:justify-center'>
+      {isHighlight && (
+        <h1 className='lg:text-xl text-center lg:text-left mt-4 font-medium underline'>
+          Highlighted Items
+        </h1>
+      )}
+      <div className='flex flex-col lg:flex-row flex-wrap lg:justify-center lg:items-start items-center'>
         {loading && (
           <RotateRightRounded
             className='animate-spin relative top-20 '

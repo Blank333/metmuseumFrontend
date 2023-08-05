@@ -5,6 +5,7 @@ import Items from "./Components/Items";
 import Item from "./Components/Item";
 import NotFound from "./Components/NotFound";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Highlights from "./Components/Highlights";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Items />} />
               <Route path='/item/:objectID' element={<Item />} />
+              <Route path='/item/highlights' element={<Highlights />} />
               <Route path='*' element={<NotFound />} />
             </Routes>
           </main>

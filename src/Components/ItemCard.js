@@ -13,17 +13,17 @@ function ItemCard({ data }) {
   } = data;
 
   return (
-    <div className='lg:w-1/4 w-full p-4 flex flex-col '>
+    <div className='lg:w-1/4 w-full p-4 flex flex-col relative'>
+      <button>
+        <div className='absolute top-7 right-7 bg-white rounded-full text-gray-500 p-1 hover:bg-green-user hover:text-white transition-colors duration-500'>
+          <BookmarkAddOutlined />
+        </div>
+      </button>
       <Link
         to={`/item/${objectID}`}
         className='hover:shadow-xl rounded-xl p-1 h-full'
       >
-        <div className='relative rounded shadow-md h-96 bg-gray-100 flex items-center justify-center overflow-hidden '>
-          <button>
-            <div className='absolute top-2 right-2 bg-white rounded-full text-gray-500 p-1'>
-              <BookmarkAddOutlined />
-            </div>
-          </button>
+        <div className='rounded shadow-md h-96 bg-gray-100 flex items-center justify-center overflow-hidden '>
           <img
             className='w-60 h-80 object-cover rounded'
             src={primaryImageSmall}
@@ -55,7 +55,7 @@ function ItemCard({ data }) {
           <Star />
           <p className='text-gray-600 font-medium'>(121)</p>
         </div>
-        <button className='border-4 border-gray-300 rounded-full hover:bg-green-user hover:text-white hover:border-green-user my-4 py-2 px-4 font-medium'>
+        <button className='border-4 border-gray-300 rounded-full hover:bg-green-user hover:text-white hover:border-green-user my-4 py-2 px-4 font-medium transition-colors duration-500'>
           Add to Bookmarks
         </button>
       </div>

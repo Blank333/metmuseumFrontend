@@ -34,7 +34,7 @@ function Navbar() {
           </section>
           <section className='lg:ml-4'>
             <select>
-              <option disabled selected hidden>
+              <option disabled defaultValue hidden>
                 Location
               </option>
               <option value='India' className='text-black'>

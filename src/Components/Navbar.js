@@ -4,7 +4,6 @@ import {
   BookmarksOutlined,
   ExpandMore,
   Menu,
-  MenuBook,
   PermIdentity,
   Search,
 } from "@mui/icons-material";
@@ -44,13 +43,13 @@ function Navbar() {
                 <ExpandMore />
               </li>
               <li className='hover:underline'>
-                <Link href='#contact'>Deals</Link>
+                <Link to='/item/highlights'>Highlights</Link>
               </li>
               <li className='hover:underline'>
-                <Link href='#contact'>What's New</Link>
+                <Link to='#contact'>What's New</Link>
               </li>
               <li className='hover:underline'>
-                <Link href='#contact'>Delivery</Link>
+                <Link to='#contact'>Delivery</Link>
               </li>
               <li className='hover:underline text-center'>
                 <input
@@ -61,14 +60,14 @@ function Navbar() {
                 <Search className='absolute right-8 top-[9.6em] text-gray-500' />
               </li>
               <li className='hover:underline'>
-                <Link href=''>
+                <Link to=''>
                   <PermIdentity className='relative bottom-[3px] right-1' />
                   Account
                 </Link>
               </li>
               <li className='hover:underline'>
                 <BookmarksOutlined className='relative bottom-[3px] right-1' />
-                <Link href=''>Bookmarks</Link>
+                <Link to=''>Bookmarks</Link>
               </li>
             </ul>
           )}
@@ -80,13 +79,13 @@ function Navbar() {
             <ExpandMore />
           </li>
           <li className='hover:underline '>
-            <Link href='#contact'>Deals</Link>
+            <Link to='/item/highlights'>Highlights</Link>
           </li>
           <li className='hover:underline '>
-            <Link href='#contact'>What's New</Link>
+            <Link to='#contact'>What's New</Link>
           </li>
           <li className='hover:underline '>
-            <Link href='#contact'>Delivery</Link>
+            <Link to='#contact'>Delivery</Link>
           </li>
           <li className='hover:underline'>
             <input
@@ -97,14 +96,14 @@ function Navbar() {
             <Search className='relative right-8 text-gray-500' />
           </li>
           <li className='hover:underline '>
-            <Link href=''>
+            <Link to=''>
               <PermIdentity className='relative bottom-[3px] right-1' />
               Account
             </Link>
           </li>
           <li className='hover:underline '>
             <BookmarksOutlined className='relative bottom-[3px] right-1' />
-            <Link href=''>Bookmarks</Link>
+            <Link to=''>Bookmarks</Link>
           </li>
         </ul>
       </div>
