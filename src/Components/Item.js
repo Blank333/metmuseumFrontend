@@ -7,6 +7,7 @@ function Item() {
   const { objectID } = useParams();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [currentImage, setCurrentImage] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -23,8 +24,17 @@ function Item() {
       });
   };
 
+  const handleImageClick = (image) => {
+    const container = document.getElementById("primaryImageContainer");
+    container.style.opacity = 0;
+    setTimeout(() => {
+      setCurrentImage(image);
+      container.style.opacity = 1;
+    }, 300);
+  };
+
   return (
-    <div className='bg-gray-100 container mx-auto'>
+    <div className='container mx-auto border-t-2 '>
       <div className='py-8 px-4'>
         {loading && (
           <RotateRightRounded
@@ -33,17 +43,20 @@ function Item() {
           />
         )}
         {data && (
-          <div className='grid grid-cols-2 rounded-lg overflow-hidden shadow-lg'>
-            <div className='flex flex-col m-6'>
-              <div className='bg-gray-200 p-8  rounded-xl'>
+          <div className='grid grid-cols-2 rounded-lg'>
+            <div className='flex flex-col m-6 '>
+              <div
+                className='bg-gray-200 p-8 rounded-xl transition-opacity duration-300'
+                id='primaryImageContainer'
+              >
                 <Link
-                  to={data?.primaryImage}
+                  to={currentImage || data?.primaryImage}
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='flex justify-center items-center'
+                  className='flex justify-center items-center '
                 >
                   <img
-                    src={data?.primaryImage}
+                    src={currentImage || data?.primaryImage}
                     alt='Item'
                     className='w-3/4 h-3/4 object-contain rounded'
                   />
@@ -51,22 +64,33 @@ function Item() {
               </div>
               <div className='flex justify-between gap-5 mt-5'>
                 {data.additionalImages.slice(0, 4).map((image) => (
-                  <Link to={image} target='_blank' rel='noopener noreferrer'>
+                  <button onClick={() => handleImageClick(image)}>
                     <img
                       src={image}
                       alt='Item'
                       className='w-40 h-40 rounded bg-gray-200 p-4'
                     />
-                  </Link>
+                  </button>
                 ))}
               </div>
             </div>
-            <div className='mt-8'>
-              <h1 className='text-2xl font-semibold'>{data?.title}</h1>
-              <p className='text-gray-600'>by Seller Name</p>
-              <div className='flex items-center mt-2'>
-                <span className='text-green-600'>{data?.rating}</span>
-                <div className='flex text-green-500'>
+            <div className='mt-8 mr-8'>
+              <div className='flex flex-col'>
+                <h1 className='text-4xl font-bold'>{data?.title}</h1>
+                <p className='text-gray-600 mt-4'>
+                  {data?.artistRole + ":"} {data?.artistDisplayName}
+                </p>
+                <Link
+                  to={data?.artistWikidata_URL}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <p className='text-gray-600'>{data?.artistDisplayBio}</p>
+                </Link>
+                <p className='text-gray-600'>
+                  {data?.creditLine + ","} {data?.medium}
+                </p>
+                <div className='flex text-green-500 mt-4'>
                   <Star />
                   <Star />
                   <Star />
@@ -75,12 +99,35 @@ function Item() {
                   <p className='text-gray-600 font-medium'>(121)</p>
                 </div>
               </div>
-              <p className='text-lg font-bold mt-2'>${data?.price}</p>
-              <p className='text-gray-600 mt-4'>
-                {data?.description ||
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at enim nec neque condimentum dapibus. Aliquam iaculis auctor turpis vel mattis."}
-              </p>
-              <div className='flex gap-8'>
+              <div className='mt-8 border-t-2'>
+                <p className='text-lg font-semibold mt-8'>
+                  Dimensions: {data?.dimensions}
+                </p>
+              </div>
+              <div className='mt-8 border-t-2 '>
+                <p className='font-medium text-xl mb-4 mt-8'>
+                  Choose picture to view
+                </p>
+                <div className='flex justify-start gap-6 '>
+                  <button onClick={() => handleImageClick(data.primaryImage)}>
+                    <img
+                      src={data.primaryImage}
+                      alt='Item'
+                      className='w-14 h-14 rounded-full active:outline-green-900 active:outline  p-1'
+                    />
+                  </button>
+                  {data?.additionalImages.slice(0, 4).map((image) => (
+                    <button onClick={() => handleImageClick(image)}>
+                      <img
+                        src={image}
+                        alt='Item'
+                        className='w-14 h-14 rounded-full active:outline-green-900 active:outline p-1'
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className='flex gap-8 mt-8 border-t-2'>
                 <Link
                   to={data?.objectURL}
                   target='_blank'
