@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getObjectDetails } from "../api/api";
 import { RotateRightRounded, Star } from "@mui/icons-material";
+import NotFound from "./NotFound";
 
 function Item() {
   const { objectID } = useParams();
@@ -35,14 +36,14 @@ function Item() {
 
   return (
     <div className='container mx-auto border-t-2 '>
-      <div className='py-8 px-4'>
+      <div className='py-8 px-4 flex justify-center'>
         {loading && (
           <RotateRightRounded
-            className='animate-spin text-center '
+            className='animate-spin'
             style={{ fontSize: 48 }}
           />
         )}
-        {data && (
+        {data ? (
           <div className='grid grid-cols-2 rounded-lg'>
             <div className='flex flex-col m-6 '>
               <div
@@ -78,7 +79,7 @@ function Item() {
               <div className='flex flex-col'>
                 <h1 className='text-4xl font-bold'>{data?.title}</h1>
                 <p className='text-gray-600 mt-4'>
-                  {data?.artistRole + ":"} {data?.artistDisplayName}
+                  {data?.artistRole && +":"} {data?.artistDisplayName}
                 </p>
                 <Link
                   to={data?.artistWikidata_URL}
@@ -88,7 +89,7 @@ function Item() {
                   <p className='text-gray-600'>{data?.artistDisplayBio}</p>
                 </Link>
                 <p className='text-gray-600'>
-                  {data?.creditLine + ","} {data?.medium}
+                  {data?.creditLine && +","} {data?.medium}
                 </p>
                 <div className='flex text-green-500 mt-4'>
                   <Star />
@@ -142,6 +143,8 @@ function Item() {
               </div>
             </div>
           </div>
+        ) : (
+          !loading && <NotFound />
         )}
       </div>
     </div>
