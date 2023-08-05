@@ -15,7 +15,7 @@ function Navbar() {
     setIsMenuOpen(!isMenuOpen);
   };
   return (
-    <nav className='p-2 text-gray-800 lg:h-28 font-medium '>
+    <nav className='p-2 text-gray-800 lg:h-28 font-medium bg-white '>
       <div className='flex container m-auto'>
         <div className='flex justify-between w-full lg:w-auto lg:mr-10'>
           <Link to='/'>
